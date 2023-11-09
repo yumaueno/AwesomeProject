@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
 
 export default function App() {
   const [currentDirective, setCurrentDirective] = useState("");
@@ -58,6 +58,7 @@ export default function App() {
     "一番結婚したい人とイッキ！",
     "一番旅行に行ったら楽しそうな人とイッキ！",
   ]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const getRandomDirective = () => {
     const randomIndex = Math.floor(Math.random() * directives.length);
@@ -68,75 +69,131 @@ export default function App() {
     if (inputDirective.trim() !== "") {
       setDirectives([...directives, inputDirective]);
       setInputDirective("");
+      setModalVisible(false);
     }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>飲み会司令アプリ</Text>
-      <Text style={styles.directiveText}>{currentDirective}</Text>
-      <TouchableOpacity style={styles.button} onPress={getRandomDirective}>
-        <Text style={styles.buttonText}>司令を出す</Text>
-      </TouchableOpacity>
-      <TextInput 
-        style={styles.input}
-        value={inputDirective}
-        onChangeText={setInputDirective}
-        placeholder="新しい司令を入力..."
+    <View style={styles.container}>
+      <Text style={styles.header}>飲み会指令アプリ</Text>
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.directiveText}>{currentDirective || "指令を出すボタンを押してください"}</Text>
+        <TouchableOpacity style={styles.button} onPress={getRandomDirective}>
+          <Text style={styles.buttonText}>指令を出す</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.addButton]} onPress={() => setModalVisible(true)}>
+          <Text style={styles.buttonText}>指令を追加</Text>
+        </TouchableOpacity>
+      </ScrollView>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <TextInput 
+              style={styles.input}
+              value={inputDirective}
+              onChangeText={setInputDirective}
+              placeholder="新しい指令を入力..."
+            />
+            <TouchableOpacity style={styles.button} onPress={addDirective}>
+              <Text style={styles.buttonText}>追加する</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
+              <Text style={styles.buttonText}>閉じる</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      <Image
+        source={require('./assets/beer-image.png')}
+        style={styles.beerImage}
+        resizeMode="contain"
       />
-      <TouchableOpacity style={[styles.button, styles.addButton]} onPress={addDirective}>
-        <Text style={styles.buttonText}>司令を追加</Text>
-      </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#F2F2F2',
+    flex: 1,
+    paddingTop: 50,
+    backgroundColor: '#FFF3E0',
+  },
+  scrollView: {
+    flex: 1,
   },
   header: {
-    fontSize: 26,
-    marginBottom: 50,
-    color: '#333',
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#FFB300',
     fontWeight: 'bold',
+    padding: 10,
+    backgroundColor: '#FFFDE7',
   },
   directiveText: {
-    fontSize: 22,
-    marginBottom: 30,
+    fontSize: 24,
     textAlign: 'center',
-    color: '#555',
+    color: '#FF6F00',
+    fontWeight: 'bold',
+    padding: 20,
+    borderRadius: 5,
+    backgroundColor: '#FFFDE7',
+    margin: 20,
+    minHeight: 100,
   },
   input: {
-    width: '100%',
+    width: '80%',
     height: 40,
     padding: 10,
     marginBottom: 20,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: '#007BFF',
+    borderColor: '#FFB300',
+    backgroundColor: '#FFFDE7',
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#FFB300',
     paddingHorizontal: 30,
     paddingVertical: 15,
     borderRadius: 25,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    margin: 10,
+    alignSelf: 'center',
   },
   addButton: {
     marginTop: 10,
   },
   buttonText: {
-    color: 'white',
+    color: '#FFFDE7',
     fontSize: 18,
     fontWeight: '600',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    width: '90%', // モーダルの横幅を調整
+    backgroundColor: '#FFFDE7',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  beerImage: {
+    width: '100%',
+    height: 200,
+    marginBottom: 150
   },
 });
