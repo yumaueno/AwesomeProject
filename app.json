@@ -20,7 +20,7 @@
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "wwcorp",
+      "package": "com.umatan.drinkikki",
       "versionCode": 1,
       "permissions": [],
       "adaptiveIcon": {
