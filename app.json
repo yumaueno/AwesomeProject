@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "飲み会ゲーム「イッキ！」",
+    "name": "飲み会・合コンゲーム「あなたはどっち！？」",
     "slug": "drink-ikki",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/beer-image.png",
     "userInterfaceStyle": "light",
@@ -17,7 +17,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "wwcorp",
-      "buildNumber": "1.0.0"
+      "buildNumber": "2.0.0"
     },
     "android": {
       "package": "com.umatan.drinkikki",

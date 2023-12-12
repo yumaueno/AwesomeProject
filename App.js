@@ -5,59 +5,46 @@ export default function App() {
   const [currentDirective, setCurrentDirective] = useState("");
   const [inputDirective, setInputDirective] = useState("");
   const [directives, setDirectives] = useState([
-    "自分だけ豪快にイッキ！",
-    "右隣の人と乾杯してイッキ！",
-    "左隣の人と乾杯してイッキ！",
-    "全員で乾杯してイッキ！",
-    "男性全員で乾杯してイッキ",
-    "女性全員で乾杯してイッキ",
-    "飲ませたい人を指差してイッキ",
-    "全員で飲ませたい人を指差してイッキ",
-    "たけのこニョッキッキで負けた人イッキ",
-    "山手線ゲームで負けた人イッキ",
-    "黒い服を着ている人イッキ！",
-    "白い服を着ている人イッキ！",
-    "メガネをかけている人イッキ！",
-    "ジャンケンで負けた人イッキ！",
-    "ジャンケンで勝った人イッキ！",
-    "年齢が奇数の人イッキ！",
-    "年齢が偶数の人イッキ！",
-    "今月誕生日の人イッキ！",
-    "全員左隣の人の飲み物をイッキ！",
-    "全員右隣の人の飲み物をイッキ！",
-    "ピアスをしている人イッキ！",
-    "帽子をかぶっている人イッキ！",
-    "今日初めて会った人と乾杯してイッキ！",
-    "ビールを飲んでいる人イッキ！",
-    "ワインを飲んでいる人イッキ！",
-    "最初に席に座った人イッキ！",
-    "最後に席に座った人イッキ！",
-    "今、笑顔の人イッキ！",
-    "足を組んでいる人イッキ！",
-    "最も遠くから来た人イッキ！",
-    "最も近くから来た人イッキ！",
-    "ペットを飼っている人イッキ！",
-    "一番直近で旅行に行った人イッキ！",
-    "携帯の残量が50%以下の人イッキ！",
-    "名前に「こ」が入っている人イッキ！",
-    "髪の毛が一番長い人イッキ！",
-    "髪の毛が一番短い人イッキ！",
-    "Instagramのフォロワーが500人以上の人イッキ！",
-    "Twitterのフォロワーが500人以上の人イッキ！",
-    "最も身長が高い人イッキ！",
-    "全員でお酒が強い人を指して一番集まった人イッキ！",
-    "一番遠くの国を訪れたことがある人イッキ！",
-    "一番多くの国を訪れたことがある人イッキ！",
-    "時計をしている人イッキ！",
-    "最も早く起きた人イッキ！",
-    "無人島に一人だけ連れて行くとしたら選ぶ人とイッキ！",
-    // 若干ハード要素
-    "一番エッチしたい人とイッキ！",
-    "一番キスしたい人とイッキ！",
-    "一番デートしたい人とイッキ！",
-    "一番付き合いたい人とイッキ！",
-    "一番結婚したい人とイッキ！",
-    "一番旅行に行ったら楽しそうな人とイッキ！",
+    "デートで行くならディズニーシー派？ディズニーランド派？",
+    "デートで行くなら水族館派？動物園派？",
+    "朝食にはパン派ご飯派？",
+    "コーヒーはブラック派？それともミルク入り？",
+    "映画を見るなら家派？それとも映画館派？",
+    "旅行するなら海派？それとも山派？",
+    "音楽を聴くならJ-POPか洋楽？",
+    "スポーツは観戦派？それとも実際にやる派？",
+    "休日はアクティブに過ごす派？それともゆっくり派？",
+    "読書は紙の本派？それとも電子書籍派？",
+    "夏休みは海外旅行派？それとも国内旅行派？",
+    "食事は和食派？それとも洋食派？",
+    "スイーツはケーキ派？それともアイスクリーム派？",
+    "猫派？それとも犬派？",
+    "夜更かし派？それとも早寝早起き派？",
+    "ショッピングはオンライン派？それとも実店舗派？",
+    "映画はアクション派？それともロマンス派？",
+    "料理は自炊派？それとも外食派？",
+    "冬の旅行はスキー派？それとも温泉派？",
+    "パソコンはMac派？それともWindows派？",
+    "服装はカジュアル派？それともフォーマル派？",
+    "勉強は図書館やカフェ派？それとも自宅派？",
+    "テレビはバラエティ派？それともドラマ派？",
+    "スマートフォンはiOS派？それともAndroid派？",
+    "休日は友達と過ごす派？それとも一人で過ごす派？",
+    "趣味は室内派？それとも屋外派？",
+    "写真はスマホで撮る派？それともカメラで撮る派？",
+    "映画のジャンルはコメディ派？それともサスペンス派？",
+    "連絡はこまめに派？それともたまに派？",
+    "連絡は短文派？それとも長文派？",
+    "旅行は計画的に派？それとも突然派？",
+    "食べ物は辛い派？それとも甘い派？",
+    "運動はチームスポーツ派？それとも個人スポーツ派？",
+    "休日は早起き派？それとも二度寝派？",
+    "飲み物はコーヒー派？それとも紅茶派？",
+    "買い物は計画的に派？それとも衝動買い派？",
+    "服装は明るい色派？それとも暗い色派？",
+    "朝食はしっかり派？それとも軽食派？",
+    "仕事はチームで派？それとも単独で派？"
+    
   ]);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -76,14 +63,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>飲み会指令アプリ</Text>
+      <Text style={styles.header}>あなたはどっち！？</Text>
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.directiveText}>{currentDirective || "指令を出すボタンを押してください"}</Text>
+        <Text style={styles.directiveText}>{currentDirective || "質問を出すボタンを押してください"}</Text>
         <TouchableOpacity style={styles.button} onPress={getRandomDirective}>
-          <Text style={styles.buttonText}>指令を出す</Text>
+          <Text style={styles.buttonText}>質問を出す</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.button, styles.addButton]} onPress={() => setModalVisible(true)}>
-          <Text style={styles.buttonText}>指令を追加</Text>
+          <Text style={styles.buttonText}>質問を追加</Text>
         </TouchableOpacity>
       </ScrollView>
 
@@ -99,7 +86,7 @@ export default function App() {
               style={styles.input}
               value={inputDirective}
               onChangeText={setInputDirective}
-              placeholder="新しい指令を入力..."
+              placeholder="新しい質問を入力..."
             />
             <TouchableOpacity style={styles.button} onPress={addDirective}>
               <Text style={styles.buttonText}>追加する</Text>
